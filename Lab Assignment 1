@@ -1,0 +1,97 @@
+#include<stdio.h>
+int main(){
+int choice,size=0;
+int i;
+printf("Enter the no of elements in the array");
+scanf("%d",&size);
+int arr[size];
+printf("Enter %d elements in the array:",size);
+for(int i=0;i<size;i++){
+    printf("Enter element %d:",i+1);
+    scanf("%d",arr[i]);
+
+}
+for(i=0;i<size;i++){
+    printf("%d",arr[i]);
+}
+do{
+    printf("/nLinear Search Operations/n");
+    printf("1. Linear Search");
+    printf("2. Inserting an element");
+    printf("3. Deletion of an element");
+    printf("4. Reversing an array");
+    printf("5. Updating the array");
+    printf("6. Exit/n");
+    printf("/nEnter your choice:");
+    scanf("%d",choice);
+    switch(choice){
+        case 1:{
+         int key, found = 0;
+                    printf("Enter the element to search: ");
+                    scanf("%d", &key);
+                    for(i = 0; i < size; i++) {
+                        if(arr[i] == key) {
+                            printf("Element %d found at index %d\n", key, i);
+                            found = 1;
+                            break;
+                        }
+                    }
+                    if(!found)
+                        printf("Element %d not found in the array\n", key);
+                    
+    }
+    break;
+    case 2:{
+        int pos, element;
+                    printf("Enter the position to insert: ");
+                    scanf("%d", &pos);
+                    if(pos < 1 || pos > size + 1) {
+                        printf("Invalid position!\n");
+                        break;
+                    }
+                    printf("Enter the element to insert: ");
+                    scanf("%d", &element);
+                    size++;
+                    for(int i = size - 1; i >= pos; i--) {
+                        arr[i] = arr[i - 1];
+                    }
+                    arr[pos - 1] = element;
+                    printf("Element inserted successfully!\n");
+                }
+                break;
+    case 3:{
+        int pos;
+                    printf("Enter the position to delete: ");
+                    scanf("%d", &pos);
+                    if(pos < 1 || pos > size) {
+                        printf("Invalid position!\n");
+                        break;
+                    }
+                    for(i = pos - 1; i < size - 1; i++) {
+                        arr[i] = arr[i + 1];
+                    }
+                    size--;
+                    printf("Element deleted successfully!\n");
+                }
+                break;
+    case 4:{
+        int temp;
+                    for(i = 0; i < size / 2; i++) {
+                        temp = arr[i];
+                        arr[i] = arr[size - i - 1];
+                        arr[size - i - 1] = temp;
+                    }
+                    printf("Array reversed successfully!\n");
+    }
+    break;
+    case 5:{
+        for(i = 0; i < size; i++) 
+                    if(arr[i] % 2 == 1)
+                        arr[i] *= 2; 
+                    else if(i % 2 == 0)
+                        arr[i] += 5;
+    
+    break;}
+    
+
+    } while(choice!=6);}
