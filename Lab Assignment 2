@@ -1,0 +1,59 @@
+A.
+#include<stdio.h>
+int BinarySearch(int arr[],int l,int r, int x)
+{
+    while(l<=r){
+        int m=l+(r-1)/2;
+
+        if (arr[m]==x)
+        return m;
+        if(arr[m]<x)
+        l=m+1;
+        if(arr[m]>x)
+        r-m-1;
+    }
+    return -1;
+}
+int main(void)
+{
+    int arr[]={2,4,6,7,10};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int x=6;
+    int result=BinarySearch(arr,0,n-1,x);
+    (result==-1)
+    ?printf("Element not found"):
+    printf("Element found at %d",result);
+
+    return 0;
+}
+B.
+#include<stdio.h>
+int BinarySearch(int arr[],int l, int r, int x)
+{
+    if(r>=l){
+        int mid=l+(r-1)/2;
+
+        if(arr[mid]=x)
+        return mid;
+        if(arr[mid]>x)
+        return BinarySearch(arr,l,mid-1,x);
+        return BinarySearch(arr,mid+1,r,x);
+
+    }
+    return -1;
+}
+    int main()
+    {
+        
+
+    int arr[]={2,4,6,7,10};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int x=10;
+    int result=BinarySearch(arr,0,n-1,x);
+    (result==-1)
+    ?printf("Element not found"):
+    printf("Element found at %d",result);
+
+    return 0;
+}
+    
